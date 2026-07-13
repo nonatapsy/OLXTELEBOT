@@ -19,8 +19,8 @@ if not BOT_TOKEN or not CHAT_ID or not API_URL:
     logger.error("Missing environment variables: BOT_TOKEN, CHAT_ID, or API_URL")
     exit(1)
 
-USER_API_URL = "https://www.olx.in/api/users/{user_id}"
-AD_URL = "https://www.olx.in/item/{ad_id}"
+USER_API_URL = "https://www.olx.co.id/api/users/{user_id}"
+AD_URL = "https://www.olx.co.id/item/{ad_id}"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0"
 }
