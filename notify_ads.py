@@ -35,6 +35,8 @@ if os.path.exists(notified_ads_file):
 else:
     notified_ads = set()
 
+notified_ads = set()
+
 
 def filter_user_data(user_data):
     if not bool(user_data):
