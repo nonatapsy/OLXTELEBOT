@@ -34,8 +34,6 @@ if os.path.exists(notified_ads_file):
         notified_ads = pickle.load(f)
 else:
     notified_ads = set()
-    
-sent_ads = () 
 
 
 def filter_user_data(user_data):
