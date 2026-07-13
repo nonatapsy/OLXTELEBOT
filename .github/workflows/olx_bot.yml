@@ -3,7 +3,7 @@ name: Run OLX Telegram Bot
 on:
   schedule:
     # Mengatur bot berjalan otomatis setiap 1 jam
-    - cron: '0 * * * *'
+    - cron: '1 * * * *'
   workflow_dispatch: # Tombol untuk menjalankan manual
 
 jobs:
