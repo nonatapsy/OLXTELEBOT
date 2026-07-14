@@ -33,7 +33,7 @@ jobs:
 
     - name: Run Script
       env:
-        BIT_TOKEN: ${{ secrets.BOT_TOKEN }}      
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}      
         CHAT_ID: ${{ secrets.CHAT_ID }}      
         API_URL: ${{ secrets.API_URL }}          
       run: python notify_ads.py
