@@ -36,7 +36,7 @@ jobs:
         TOKEN: ${{ secrets.BOT_TOKEN }}      
         CHAT_ID: ${{ secrets.CHAT_ID }}      
         URL: ${{ secrets.API_URL }}          
-      run: python bot.py
+      run: python notify_ads.py
 
     # 2. Menyimpan kembali database pkl terbaru ke server GitHub
     - name: Upload Session Cache
