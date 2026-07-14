@@ -33,9 +33,9 @@ jobs:
 
     - name: Run Script
       env:
-        TOKEN: ${{ secrets.BOT_TOKEN }}      
+        BIT_TOKEN: ${{ secrets.BOT_TOKEN }}      
         CHAT_ID: ${{ secrets.CHAT_ID }}      
-        URL: ${{ secrets.API_URL }}          
+        API_URL: ${{ secrets.API_URL }}          
       run: python notify_ads.py
 
     # 2. Menyimpan kembali database pkl terbaru ke server GitHub
