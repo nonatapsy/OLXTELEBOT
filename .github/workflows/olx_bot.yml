@@ -2,9 +2,8 @@ name: Run OLX Telegram Bot
 
 on:
   schedule:
-    # Mengatur bot berjalan otomatis setiap 1 jam
-    - cron: '5 * * * *'
-  workflow_dispatch: # Tombol untuk menjalankan manual
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -17,16 +16,32 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10' # <--- Ini bagian yang sudah diperbaiki
+        python-version: '3.10'
 
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    # 1. Mengunduh database pkl dari sesi sebelumnya (jika ada)
+    - name: Download Session Cache
+      uses: actions/download-artifact@v4
+      with:
+        name: bot-database
+        path: .
+      continue-on-error: true
+
     - name: Run Script
       env:
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        CHAT_ID: ${{ secrets.CHAT_ID }}
-        API_URL: ${{ secrets.API_URL }}
-      run: python notify_ads.py
+        TOKEN: ${{ secrets.BOT_TOKEN }}      
+        CHAT_ID: ${{ secrets.CHAT_ID }}      
+        URL: ${{ secrets.API_URL }}          
+      run: python bot.py
+
+    # 2. Menyimpan kembali database pkl terbaru ke server GitHub
+    - name: Upload Session Cache
+      uses: actions/upload-artifact@v4
+      with:
+        name: bot-database
+        path: notified_ads.pkl
+        retention-days: 1
